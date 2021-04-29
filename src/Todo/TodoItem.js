@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes, { func } from 'prop-types'
 import { findByLabelText } from '@testing-library/dom';
 
 
@@ -20,16 +20,19 @@ const styles = {
 }
 
 
-function TodoItem({ todo, index }) {
+function TodoItem({ todo, index, onChange }) {
     return(
        <li style={styles.li}> 
          <span>
-            <input type='checkbox'  style={styles.input} />
+            <input type='checkbox'  style={styles.input} 
+            onChange= { () =>  onChange(todo.id) } 
+            />
             <strong>{index + 1}</strong>
+            &nbsp;
             {todo.title}
         </span>
 
-          <button>&times;</button>
+          <button className="rm">&times;</button>
        </li>
 
     
@@ -38,8 +41,8 @@ function TodoItem({ todo, index }) {
 
 TodoItem.propTypes = {
    todo: PropTypes.object.isRequired,
-   index: PropTypes.number
-
+   index: PropTypes.number,
+   onChange: PropTypes.func.isRequired
 }
 
 

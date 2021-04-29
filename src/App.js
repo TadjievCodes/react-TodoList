@@ -11,10 +11,15 @@ const todos = [
 
 ]
 
+ function toggleTodo(id) {
+    console.log('todo id',id);
+ } 
+
+
   return (
   <div className="wrapper"> 
     <h1>React TodoList</h1>
-      <Todolist todos={todos}/>
+      <Todolist todos={todos} onToggle={toggleTodo}/>
   </div>
   
   );
